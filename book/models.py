@@ -38,7 +38,13 @@ class Author(models.Model):
 # rating model
 class Rating(models.Model):
     book = models.ForeignKey('Book',on_delete=models.CASCADE, related_name='ratings')
-    rating = models.PositiveSmallIntegerField()
+    class RatingChoices(models.IntegerChoices):
+        POOR = 1 #"P"
+        FAIR = 2
+        GOOD = 3 
+        VERY_GOOD = 4
+        EXCELLENT = 5
+    rating = models.IntegerField(choices=RatingChoices.choices)
 
     def __str__(self):
         return str(self.book)

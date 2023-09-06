@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse 
 from rest_framework import generics 
 from .models import Book, Author, Rating
-from .serializers import  BookSerializer, AuthorSerializer
+from .serializers import  BookSerializer, AuthorSerializer, RatingSerializer
 
 
 
@@ -24,6 +24,17 @@ class AuthorListCreate(generics.ListCreateAPIView):
 class AuthorAction(generics.RetrieveUpdateDestroyAPIView):
     queryset = Author.objects.all().order_by("-id")
     serializer_class = AuthorSerializer
+
+class RatingListCreate(generics.ListCreateAPIView):
+    queryset = Rating.objects.all().order_by("-id")
+    serializer_class = RatingSerializer
+
+class RatingAction(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Rating.objects.all().order_by("-id")
+    serializer_class = RatingSerializer
+
+    
+
 
 
 
