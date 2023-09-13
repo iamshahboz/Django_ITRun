@@ -2,6 +2,7 @@ from django.db import models
 from .validators import validate_decimal, validate_integer,validate_string 
 
 
+
 # book model
 class Book(models.Model):
     class GenreChoices(models.TextChoices):
